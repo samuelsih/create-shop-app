@@ -21,11 +21,16 @@ class Product extends Model
 
     public function orders()
     {
-        return $this->belongsToMany(Orders::class)->withPivot('quantity');
+        return $this->morphedByMany(Orders::class, 'productable')->withPivot('quantity');
     }
 
     public function carts()
     {
-        return $this->belongsToMany(Cart::class)->withPivot('quantity');
+        return $this->morphedByMany(Cart::class, 'productable')->withPivot('quantity');
+    }
+
+    public function images()
+    {
+        return $this->morphMany(Image::class, 'imageable');
     }
 }

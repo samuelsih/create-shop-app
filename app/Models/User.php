@@ -52,9 +52,19 @@ class User extends Authenticatable
         'payed_at',
     ];
 
+    public function orders()
+    {
+        return $this->hasMany(Orders::class, 'customer_id');
+    }
+
     public function payments()
     {
         return $this->hasManyThrough(Payment::class, Orders::class, 'customer_id');
+    }
+
+    public function image()
+    {
+        return $this->morphOne(Image::class, 'imageable');
     }
 
 }

@@ -12,6 +12,7 @@ class Orders extends Model
 
     protected $fillable = [
         'status',
+        'customer_id'
     ];
 
     public function payment()
@@ -29,6 +30,6 @@ class Orders extends Model
 
     public function products()
     {
-        return $this->belongsToMany(Product::class)->withPivot('quantity');
+        return $this->morphToMany(Product::class, 'productable')->withPivot('quantity');
     }
 }
