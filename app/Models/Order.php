@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Payments;
 
-class Orders extends Model
+class Order extends Model
 {
     use HasFactory;
 
@@ -17,7 +17,7 @@ class Orders extends Model
 
     public function payment()
     {
-        return $this->hasOne(Payments::class);
+        return $this->hasOne(Payment::class);
     }
 
     public function user()

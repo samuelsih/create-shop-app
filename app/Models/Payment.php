@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+// use App\Models\Order;
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Payments extends Model
+class Payment extends Model
 {
     use HasFactory;
 
@@ -33,6 +35,6 @@ class Payments extends Model
     //foreign key
     public function order()
     {
-        return $this->belongsTo(Orders::class);
+        return $this->belongsTo(Order::class);
     }
 }

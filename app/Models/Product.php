@@ -2,6 +2,9 @@
 
 namespace App\Models;
 
+// use App\Models\Cart;
+// use App\Models\Image;
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -21,7 +24,7 @@ class Product extends Model
 
     public function orders()
     {
-        return $this->morphedByMany(Orders::class, 'productable')->withPivot('quantity');
+        return $this->morphedByMany(Order::class, 'productable')->withPivot('quantity');
     }
 
     public function carts()

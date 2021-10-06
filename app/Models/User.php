@@ -2,6 +2,10 @@
 
 namespace App\Models;
 
+// use App\Models\Order;
+// use App\Models\Payment;
+// use App\Models\Image;
+
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -54,12 +58,12 @@ class User extends Authenticatable
 
     public function orders()
     {
-        return $this->hasMany(Orders::class, 'customer_id');
+        return $this->hasMany(Order::class, 'customer_id');
     }
 
     public function payments()
     {
-        return $this->hasManyThrough(Payment::class, Orders::class, 'customer_id');
+        return $this->hasManyThrough(Payment::class, Order::class, 'customer_id');
     }
 
     public function image()

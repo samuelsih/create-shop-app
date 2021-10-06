@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\Orders;
+use App\Models\Payment;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class OrdersFactory extends Factory
+class PaymentFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Orders::class;
+    protected $model = Payment::class;
 
     /**
      * Define the model's default state.
@@ -22,7 +22,8 @@ class OrdersFactory extends Factory
     public function definition()
     {
         return [
-            'status' => $this->faker->randomElement(['pending', 'payed', 'shipped']),
+            'amount' => $this->faker->randomFloat($min = 15, $max = 500, $maxDecimal = 2),
+            'payed_at' => $this->faker->dateTimeBetween($startDate = '-1 year', $endDate = 'now', $timezone = null),
         ];
     }
 }
