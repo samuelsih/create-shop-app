@@ -52,5 +52,9 @@ class User extends Authenticatable
         'payed_at',
     ];
 
-    
+    public function payments()
+    {
+        return $this->hasManyThrough(Payment::class, Orders::class, 'customer_id');
+    }
+
 }
