@@ -13,7 +13,7 @@ class CreateProductablesTable extends Migration
      */
     public function up()
     {
-        Schema::create('cart_product', function (Blueprint $table) {
+        Schema::create('productables', function (Blueprint $table) {
             $table->unsignedBigInteger('product_id');
             $table->integer('quantity')->unsigned();
             $table->morphs('productable');
@@ -29,6 +29,6 @@ class CreateProductablesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cart_product');
+        Schema::dropIfExists('productables');
     }
 }
