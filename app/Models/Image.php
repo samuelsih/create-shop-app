@@ -17,5 +17,8 @@ class Image extends Model
         'path',
     ];
 
-    
+    public function imageable()
+    {
+        return $this->morphOne(Image::class, 'imageable');
+    }
 }
