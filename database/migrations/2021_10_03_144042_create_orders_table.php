@@ -21,7 +21,7 @@ class CreateOrdersTable extends Migration
             $table->bigInteger('customer_id')->unsigned();
             $table->timestamps();
 
-            $table->foreign('customer_id')->references('id')->on('user');
+            $table->foreign('customer_id')->references('id')->on('users');
         });
     }
 

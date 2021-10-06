@@ -26,4 +26,9 @@ class Orders extends Model
         //makanya tambahkan parameter baru untuk klarifikasi nama foreign key nya
         return $this->belongsTo(User::class, 'customer_id');
     }
+
+    public function products()
+    {
+        return $this->belongsToMany(Product::class)->withPivot('quantity');
+    }
 }

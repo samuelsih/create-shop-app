@@ -18,4 +18,14 @@ class Product extends Model
         'price',
         'status',
     ];
+
+    public function orders()
+    {
+        return $this->belongsToMany(Orders::class)->withPivot('quantity');
+    }
+
+    public function carts()
+    {
+        return $this->belongsToMany(Cart::class)->withPivot('quantity');
+    }
 }
