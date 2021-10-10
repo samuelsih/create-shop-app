@@ -14,7 +14,7 @@ class ProductsController extends Controller
 
     public function index()
     {
-        $products = Product::all();
+        $products = Product::available()->get();
         return view('home', [
             'products' => $products
         ]);

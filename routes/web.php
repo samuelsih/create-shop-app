@@ -47,6 +47,9 @@ Route::match(['put', 'patch'], '/products/{product}', [EditProductsController::c
 //Delete product
 Route::delete('/products/{product}', [DeleteProductsController::class, 'destroy'])->name('products.destroy');
 
+Route::resource('products.carts', 'ProductCartController')->only(['store', 'destroy']);
+
 Auth::routes();
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

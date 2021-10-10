@@ -3,7 +3,15 @@
 @section('content')
 
 <div class="row">
-    <h1>WELCOME</h1>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            @foreach ($products as $product)
+                <div class="col-3">
+                    @include('components.product-card')
+                </div>
+            @endforeach
+        </div>
+    </div>
 </div>
 
 @endsection
