@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CreateProductsController;
 use App\Http\Controllers\DeleteProductsController;
 use App\Http\Controllers\EditProductsController;
@@ -48,6 +49,8 @@ Route::match(['put', 'patch'], '/products/{product}', [EditProductsController::c
 Route::delete('/products/{product}', [DeleteProductsController::class, 'destroy'])->name('products.destroy');
 
 Route::resource('products.carts', 'ProductCartController')->only(['store', 'destroy']);
+
+Route::resource('carts', 'CartController')->only(['index']);
 
 Auth::routes();
 

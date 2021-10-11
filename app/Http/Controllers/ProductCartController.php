@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use App\Models\Product;
+use App\Services\CartService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
 
@@ -16,10 +17,19 @@ class ProductCartController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
+
+    private $cartService;
+
+    public function __construct(CartService $cartService)
+    {
+        $this->cartService = $cartService;
+    }
+
     public function store(Request $request, Product $product)
     {
         // dd('success');
-        $cart = $this->getFromCookieOrCreate();
+
+        $cart = $this->cartService->getFromCookieOrCreate();
 
         $quantity = $cart->products()
         ->find($product->id)
@@ -47,14 +57,5 @@ class ProductCartController extends Controller
     public function destroy(Product $product, Cart $cart)
     {
         //
-    }
-
-    private function getFromCookieOrCreate()
-    {
-        $cartId = Cookie::get('cart');
-
-        $cart = Cart::find($cartId);
-
-        return $cart ?? Cart::create();
     }
 }
