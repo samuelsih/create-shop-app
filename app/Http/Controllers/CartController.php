@@ -22,7 +22,11 @@ class CartController extends Controller
 
     public function index()
     {
-        $cart = $this->cartService->getFromCookieOrCreate();
+        // before
+        // $cart = $this->cartService->getFromCookieOrCreate();
+
+        $cart = $this->cartService->getFromCookie();
+
         return view('carts.index', [
             'cart' => $cart,
         ]);
