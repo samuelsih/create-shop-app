@@ -2,7 +2,12 @@
 
 @section('content')
     <h1>Your Order</h1>
-    <a href="{{ route('products.create') }}" class="btn btn-success mb-4">Order Now</a>
+
+    <h4 class="text-center">Total : <strong>{{ $cart->total }}</strong></h4>
+    <form action="{{ route('orders.store') }}" method="POST" class="inline-block mb-3 text-center">
+        @csrf
+        <button type="submit" class="btn btn-success">Confirm Order</button>
+    </form>
 
     <div class="table-responsive">
         <table class="table table-striped">
@@ -26,7 +31,11 @@
                         <td>{{ $product->title }}</td>
                         <td>{{ $product->price }}</td>
                         <td>{{ $product->pivot->quantity }}</td>
-                        <td>{{ $product->pivot->quantity * $product->price }}</td>
+
+                        {{-- Gunakan method getTotalAttribute dari Model product --}}
+                        <td>{{ $product->total }}</td>
+
+                        {{-- <td>{{ $product->pivot->quantity * $product->price }}</td> --}}
                     </tr>
                     @endforeach
                 </tr>
