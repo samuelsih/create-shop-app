@@ -4,6 +4,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\CreateProductsController;
 use App\Http\Controllers\DeleteProductsController;
 use App\Http\Controllers\EditProductsController;
+use App\Http\Controllers\OrderPaymentController;
 use App\Http\Controllers\ProductsController;
 use Illuminate\Support\Facades\Route;
 
@@ -53,6 +54,8 @@ Route::resource('products.carts', 'ProductCartController')->only(['store', 'dest
 Route::resource('carts', 'CartController')->only(['index']);
 
 Route::resource('orders', 'OrderController')->only(['create', 'store']);
+
+Route::resource('orders.payments', 'OrderPaymentController')->only(['create', 'store']);
 
 Auth::routes();
 

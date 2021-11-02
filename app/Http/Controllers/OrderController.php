@@ -10,7 +10,7 @@ use App\Services\CartService;
 
 class OrderController extends Controller
 {
-    private $cartService;
+    public $cartService;
 
     public function __construct(CartService $cartService)
     {
@@ -65,6 +65,8 @@ class OrderController extends Controller
         // dd($cartProductsWithQuantity);
 
         $order->products()->attach($cartProductsWithQuantity->toArray());
+
+        return redirect()->route('orders.payments.create', ['order' => $order->id]);
 
     }
 
